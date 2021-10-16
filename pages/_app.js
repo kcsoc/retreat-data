@@ -9,8 +9,9 @@ function MyApp({ Component, pageProps }) {
 // Before: export default App;
 export default process.env.PASSWORD_PROTECT
   ? withPasswordProtect(MyApp, {
-      // Options go here (optional)
-      loginApiUrl: "/login",
+      loginComponentProps: {
+        logo: "/logo.png",
+      },
     })
   : MyApp;
 
