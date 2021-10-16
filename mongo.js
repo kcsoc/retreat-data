@@ -12,11 +12,11 @@ async function createCon() {
 const Objecc =
   mongoose.models.datas ||
   mongoose.model("datas", {
-    "Product Form: First Name": String,
-    "Product Form: Last Name": String,
-    "Product Form: Email": String,
-    "Product Form: Mobile Number": String,
-    "Product Form: University": String,
+    "First Name": String,
+    Surname: String,
+    Email: String,
+    "Mobile Phone": String,
+    "University Name": String,
   });
 
 exports.mongoAdd = async (data) => {
@@ -37,7 +37,7 @@ exports.mongoAdd = async (data) => {
 exports.distinct = async () => {
   await createCon();
 
-  const data = await Objecc.distinct("Product Form: University");
+  const data = await Objecc.distinct("University Name");
   return data;
 };
 
@@ -47,7 +47,7 @@ exports.countUnis = async (unis) => {
   for (let i = 0; i < unis.length; i++) {
     const uni = unis[i];
     const count = await Objecc.countDocuments({
-      "Product Form: University": uni,
+      "University Name": uni,
     });
     output.push({ uni, count });
   }
@@ -56,17 +56,8 @@ exports.countUnis = async (unis) => {
 
 exports.list = async (uni) => {
   await createCon();
-  const data = await Objecc.find(
-    {
-      "Product Form: University": uni,
-    },
-    {
-      "Product Form: First Name": 1,
-      "Product Form: Last Name": 1,
-      "Product Form: Mobile Number": 1,
-      "Product Form: Email": 1,
-      _id: 0,
-    }
-  );
+  const data = await Objecc.find({
+    "University Name": uni,
+  });
   return data;
 };
