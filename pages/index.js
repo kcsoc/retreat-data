@@ -14,6 +14,11 @@ export async function getServerSideProps() {
   data.push(data.splice(data.indexOf(otherObj), 1)[0]);
   console.log(data);
 
+  if (data.length === 1 && data[0] === undefined) {
+    console.log("no data");
+    return { props: { data: [] } };
+  }
+
   // Pass data to the page via props
   return { props: { data } };
 }
