@@ -19,6 +19,12 @@ export default function FileUpload() {
     const response = await fetch("/api/file", {
       method: "POST",
       body,
+    }).then(() => {
+      // refresh the page
+      window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+      };
+      window.location.reload();
     });
   };
   return (
@@ -34,10 +40,7 @@ export default function FileUpload() {
         >
           Send to server
         </button>
-        <p>
-          After uploading, wait up to 10 seconds and refresh the page to see the
-          updates
-        </p>
+        <p>After uploading, wait up to 10 seconds for the page to refresh.</p>
       </div>
     </div>
   );
