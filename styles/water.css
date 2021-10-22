@@ -665,8 +665,8 @@ table caption {
 td,
 th {
   padding: 6px;
-  text-align: left;
-  vertical-align: top;
+  /* text-align: left; */
+  /* vertical-align: top; */
   word-wrap: break-word;
 }
 
