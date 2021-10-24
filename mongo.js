@@ -67,6 +67,7 @@ exports.list = async (uni={$regex: ".*"}) => {
       "Product Form: Last Name": 1,
       "Product Form: Mobile Number": 1,
       "Product Form: Email": 1,
+      "Product Form: University": 1,
       _id: 0,
     }
   );

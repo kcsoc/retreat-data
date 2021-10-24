@@ -37,6 +37,7 @@ export default function Uni({ data }) {
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>University</th>
               <th>Email</th>
               <th>Phone</th>
             </tr>
@@ -48,8 +49,8 @@ export default function Uni({ data }) {
                 }
               >
                 <td>{item["Product Form: First Name"]}</td>
-
                 <td>{item["Product Form: Last Name"]}</td>
+                <td>{item["Product Form: University"]}</td>
                 <td>{item["Product Form: Email"]}</td>
                 <td>{item["Product Form: Mobile Number"]}</td>
               </tr>
