@@ -30,7 +30,7 @@ export default function Uni({ data }) {
         >
           Back
         </button>
-        <h2 className={styles.title}>{name}</h2>
+        <h2 className={styles.title}>{`${name} (${data.length})`}</h2>
         <br></br>
         <table border={1} cellPadding={10}>
           <tbody>
