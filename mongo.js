@@ -56,7 +56,7 @@ exports.countUnis = async (unis) => {
   return output;
 };
 
-exports.list = async (uni) => {
+exports.list = async (uni={$regex: ".*"}) => {
   await createCon();
   const data = await Objecc.find(
     {
@@ -67,6 +67,7 @@ exports.list = async (uni) => {
       "Product Form: Last Name": 1,
       "Product Form: Mobile Number": 1,
       "Product Form: Email": 1,
+      "Product Form: University": 1,
       _id: 0,
     }
   );
