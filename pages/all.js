@@ -7,13 +7,13 @@ export const getServerSideProps = async () => {
   console.log(data);
   return {
     props: {
-      name,
       data,
     },
   };
 };
 
-export default function Uni({ name, data }) {
+export default function Uni({ data }) {
+  const name = "All";
   return (
     <div className={styles.container}>
       <Head>
