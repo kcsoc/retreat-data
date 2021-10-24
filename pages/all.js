@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { list } from "../../mongo";
-import styles from "../../styles/Home.module.css";
+import { list } from "../mongo";
+import styles from "../styles/Home.module.css";
 
 export const getServerSideProps = async () => {
   const data = JSON.parse(JSON.stringify(await list()));
