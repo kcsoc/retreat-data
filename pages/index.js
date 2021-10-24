@@ -40,7 +40,7 @@ export default function Home({ data }) {
           width="200"
         />
 
-        <h2 className={styles.title}>Welcome to KCSoc Retreats!</h2>
+        <h2 className={styles.title}>Welcome to KCSoc Retreats! {`(${data.length})`}</h2>
         <table border={1} cellPadding={10}>
           <tbody>
             <tr>
