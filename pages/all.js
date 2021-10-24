@@ -60,4 +60,3 @@ export default function Uni({ name, data }) {
     </div>
   );
 }
-diff --git a/mongo.js b/mongo.js
