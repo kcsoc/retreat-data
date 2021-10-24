@@ -56,7 +56,7 @@ exports.countUnis = async (unis) => {
   return output;
 };
 
-exports.list = async (uni="*") => {
+exports.list = async (uni={$regex: "*"}) => {
   await createCon();
   const data = await Objecc.find(
     {
