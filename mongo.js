@@ -27,11 +27,13 @@ exports.mongoAdd = async (data) => {
     console.log("Unable to delete collection 'datas'");
     console.log(e);
   }
-  //   await Objecc.deleteMany({});
+
+  const promises = [];
   for (let i = 0; i < data.length; i++) {
     const obj = new Objecc(data[i]);
-    await obj.save();
+    promises.push(obj.save());
   }
+  await Promise.allSettled(promises);
 };
 
 exports.distinct = async () => {
@@ -54,7 +56,7 @@ exports.countUnis = async (unis) => {
   return output;
 };
 
-exports.list = async (uni) => {
+exports.list = async (uni={$regex: ".*"}) => {
   await createCon();
   const data = await Objecc.find({
     "University Name": uni,
