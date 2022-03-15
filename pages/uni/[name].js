@@ -36,7 +36,7 @@ export default function Uni({ name, data }) {
         <table border={1} cellPadding={10}>
           <tbody>
             <tr>
-              <th>First Name</th>
+              <th>Name</th>
               <th>Last Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -44,11 +44,11 @@ export default function Uni({ name, data }) {
             {data.map((item) => (
               <tr
                 key={
-                  item["Product Form: First Name"] +
+                  item["Product Form: Name"] +
                   item["Product Form: Last Name"]
                 }
               >
-                <td>{item["Product Form: First Name"]}</td>
+                <td>{item["Product Form: Name"]}</td>
 
                 <td>{item["Product Form: Last Name"]}</td>
                 <td>{item["Product Form: Email"]}</td>
