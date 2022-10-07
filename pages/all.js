@@ -2,6 +2,7 @@ import Head from "next/head";
 import { list } from "../mongo";
 import styles from "../styles/Home.module.css";
 
+
 export const getServerSideProps = async () => {
   const data = JSON.parse(JSON.stringify(await list()));
   console.log(data);
@@ -40,19 +41,21 @@ export default function Uni({ data }) {
               <th>University</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Coach?</th>
             </tr>
             {data.map((item) => (
               <tr
                 key={
-                  item["Product Form: Name"] +
+                  item["Product Form: First Name"] +
                   item["Product Form: Last Name"]
                 }
               >
-                <td>{item["Product Form: Name"]}</td>
+                <td>{item["Product Form: First Name"]}</td>
                 <td>{item["Product Form: Last Name"]}</td>
                 <td>{item["Product Form: University"]}</td>
                 <td>{item["Product Form: Email"]}</td>
                 <td>{item["Product Form: Mobile Number"]}</td>
+                <td>{item["Product Form: Are you interested in a coach service from any of the following locations?"]}</td>
               </tr>
             ))}
           </tbody>

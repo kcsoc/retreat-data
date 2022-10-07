@@ -72,10 +72,10 @@ export default function Home({ data }) {
         </table>
 
         <FileUpload />
-        <br/>
-        <br/>
-        <button onClick={()=>{
-          window.location.href="/all";
+        <br />
+        <br />
+        <button onClick={() => {
+          window.location.href = "/all";
         }}
         >
           View All Data
