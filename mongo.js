@@ -37,10 +37,10 @@ exports.mongoAdd = async (data) => {
   await Promise.allSettled(promises);
 };
 
-exports.distinct = async () => {
+exports.distinct = async (option) => {
   await createCon();
 
-  const data = await Objecc.distinct("Product Form: University");
+  const data = await Objecc.distinct(option);
   return data;
 };
 
@@ -57,11 +57,43 @@ exports.countUnis = async (unis) => {
   return output;
 };
 
+exports.countCoaches = async (coaches) => {
+  await createCon();
+  output = [];
+  for (let i = 0; i < coaches.length; i++) {
+    const coach = coaches[i];
+    const count = await Objecc.countDocuments({
+      "Product Form: Are you interested in a coach service from any of the following locations?": coach,
+    });
+    output.push({ coach, count });
+  }
+  return output;
+};
+
 exports.list = async (uni = { $regex: ".*" }) => {
   await createCon();
   const data = await Objecc.find(
     {
       "Product Form: University": uni,
+    },
+    {
+      "Product Form: First Name": 1,
+      "Product Form: Last Name": 1,
+      "Product Form: Mobile Number": 1,
+      "Product Form: Email": 1,
+      "Product Form: University": 1,
+      "Product Form: Are you interested in a coach service from any of the following locations?": 1,
+      _id: 0,
+    }
+  );
+  return data;
+};
+
+exports.listByCoach = async (uni = { $regex: ".*" }) => {
+  await createCon();
+  const data = await Objecc.find(
+    {
+      "Product Form: Are you interested in a coach service from any of the following locations?": uni,
     },
     {
       "Product Form: First Name": 1,

@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
-import FileUpload from "./Upload";
-import { countUnis, distinct } from "../mongo";
-import styles from "../styles/Home.module.css";
+import FileUpload from "../Upload";
+import styles from "../../styles/Home.module.css";
+import { countCoaches, distinct } from "../../mongo";
 
 export async function getServerSideProps() {
   let data;
-  data = await distinct("Product Form: University");
-  data = await countUnis(data);
+  data = await distinct("Product Form: Are you interested in a coach service from any of the following locations?");
+  data = await countCoaches(data);
   data = data.sort((a, b) => b.count - a.count);
   const otherObj = data.find((element) => element.uni === "Other");
   console.log(otherObj);
@@ -33,26 +33,25 @@ export default function Home({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <img
-          className={styles.logo}
-          src="/logo.png"
-          alt="KCSoc Logo"
-          width="200"
-        />
+        <button
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          Back
+        </button>
 
-        <h2 className={styles.title}>Welcome to KCSoc Retreats!</h2>
+        <h2 className={styles.title}>Coach Options</h2>
         <table border={1} cellPadding={10}>
           <tbody>
             <tr>
-              <th>Position</th>
-              <th>University</th>
+              <th>Coach Option</th>
               <th>Sign Ups</th>
               <th>More Info</th>
             </tr>
             {data.map((uni, index) => (
-              <tr key={uni.uni}>
-                <td>{index + 1}</td>
-                <td>{uni.uni}</td>
+              <tr key={uni.coach}>
+                <td>{uni.coach}</td>
                 <td>{uni.count}</td>
                 <td>
                   <button
@@ -60,7 +59,7 @@ export default function Home({ data }) {
                       backgroundColor: "#d0cfcf !important",
                     }}
                     onClick={() => {
-                      window.location.href = `/uni/${uni.uni}`;
+                      window.location.href = `/coaches/${uni.coach}`;
                     }}
                   >
                     View Info
@@ -70,27 +69,6 @@ export default function Home({ data }) {
             ))}
           </tbody>
         </table>
-
-        <button onClick={() => {
-          window.location.href = "/coaches";
-        }}
-        >
-          Click Here to View Data Sorted by Coach Option
-        </button>
-
-        <details>
-          <summary>Admin Stuff</summary>
-          <FileUpload />
-          <br />
-          <br />
-          <button onClick={() => {
-            window.location.href = "/all";
-          }}
-          >
-            View All Data
-          </button>
-        </details>
-
       </main>
     </div>
   );
