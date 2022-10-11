@@ -70,6 +70,13 @@ exports.countCoaches = async (coaches) => {
   return output;
 };
 
+exports.count = async () => {
+  await createCon();
+  const count = await Objecc.countDocuments();
+  return count;
+};
+
+
 exports.list = async (uni = { $regex: ".*" }) => {
   await createCon();
   const data = await Objecc.find(

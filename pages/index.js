@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import FileUpload from "./Upload";
-import { countUnis, distinct } from "../mongo";
+import { countUnis, distinct, count } from "../mongo";
 import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
@@ -19,11 +19,12 @@ export async function getServerSideProps() {
     return { props: { data: [] } };
   }
 
+  const totalSignups = await count();
   // Pass data to the page via props
-  return { props: { data } };
+  return { props: { data, totalSignups } };
 }
 
-export default function Home({ data }) {
+export default function Home({ data, totalSignups }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -41,6 +42,9 @@ export default function Home({ data }) {
         />
 
         <h2 className={styles.title}>Welcome to KCSoc Retreats!</h2>
+        <h2 style={{ margin: 0, padding: "0.5rem 0" }}>
+          Total Sign Ups: <span style={{ color: "red" }}>{totalSignups}</span>
+        </h2>
         <table border={1} cellPadding={10}>
           <tbody>
             <tr>
@@ -92,6 +96,6 @@ export default function Home({ data }) {
         </details>
 
       </main>
-    </div>
+    </div >
   );
 }
