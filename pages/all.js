@@ -42,6 +42,7 @@ export default function Uni({ data }) {
               <th>Email</th>
               <th>Phone</th>
               <th>Coach?</th>
+              <th>Grad Yr</th>
             </tr>
             {data.map((item) => (
               <tr
@@ -56,6 +57,7 @@ export default function Uni({ data }) {
                 <td>{item["Product Form: Email"]}</td>
                 <td>{item["Product Form: Mobile Number"]}</td>
                 <td>{item["Product Form: Are you interested in a coach service from any of the following locations?"]}</td>
+                <td>{item["Product Form: Graduation Year"]}</td>
               </tr>
             ))}
           </tbody>

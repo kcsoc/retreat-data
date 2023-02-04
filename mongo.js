@@ -18,6 +18,7 @@ const Objecc =
     "Product Form: Mobile Number": String,
     "Product Form: University": String,
     "Product Form: Are you interested in a coach service from any of the following locations?": String,
+    "Product Form: Graduation Year": String,
   });
 
 exports.mongoAdd = async (data) => {
@@ -90,6 +91,7 @@ exports.list = async (uni = { $regex: ".*" }) => {
       "Product Form: Email": 1,
       "Product Form: University": 1,
       "Product Form: Are you interested in a coach service from any of the following locations?": 1,
+      "Product Form: Graduation Year": 1,
       _id: 0,
     }
   );
