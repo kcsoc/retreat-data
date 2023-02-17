@@ -2,7 +2,6 @@ import Head from "next/head";
 import { list } from "../mongo";
 import styles from "../styles/Home.module.css";
 
-
 export const getServerSideProps = async () => {
   const data = JSON.parse(JSON.stringify(await list()));
   console.log(data);
@@ -14,7 +13,13 @@ export const getServerSideProps = async () => {
 };
 
 export default function Uni({ data }) {
-  const name = "All";
+  const name = "More Data";
+  // calculae total sales
+  let total = 0;
+  data.forEach((item) => {
+    total += Number(item["Total"]);
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -32,7 +37,7 @@ export default function Uni({ data }) {
           Back
         </button>
         <h2 className={styles.title}>{`${name} (${data.length})`}</h2>
-        <br></br>
+        <p>Total sales: £{total}</p>
         <table style={{
           minWidth: "90vw",
         }} border={1} cellPadding={10}>
@@ -45,6 +50,10 @@ export default function Uni({ data }) {
               <th>Phone</th>
               <th>Coach?</th>
               <th>Grad Yr</th>
+              <th>Shuttle</th>
+              <th>Total Paid</th>
+              <th>Dietary Requirements</th>
+              <th>Allergies</th>
             </tr>
             {data.map((item) => (
               <tr
@@ -60,6 +69,10 @@ export default function Uni({ data }) {
                 <td>{item["Product Form: Mobile Number"]}</td>
                 <td>{item["Product Form: Are you interested in a coach service from any of the following locations?"]}</td>
                 <td>{item["Product Form: Graduation Year"]}</td>
+                <td>{item["Lineitem variant"]}</td>
+                <td>{item["Total"]}</td>
+                <td>{item["Product Form: Any Dietary Requirements?"]}</td>
+                <td>{item["Product Form: Any Allergies?"]}</td>
               </tr>
             ))}
           </tbody>
