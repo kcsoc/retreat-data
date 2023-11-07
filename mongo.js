@@ -12,9 +12,9 @@ async function createCon() {
 const Objecc =
   mongoose.models.datas ||
   mongoose.model("datas", {
-    "Product Form: First Name": String,
+    "Product Form: Name": String,
     "Product Form: Last Name": String,
-    "Product Form: Email": String,
+    "Email": String,
     "Product Form: Mobile Number": String,
     "Product Form: University": String,
     "Product Form: Are you interested in a coach service from any of the following locations?": String,
@@ -89,10 +89,10 @@ exports.list = async (uni = { $regex: ".*" }) => {
       "Product Form: University": uni,
     },
     {
-      "Product Form: First Name": 1,
+      "Product Form: Name": 1,
       "Product Form: Last Name": 1,
       "Product Form: Mobile Number": 1,
-      "Product Form: Email": 1,
+      "Email": 1,
       "Product Form: University": 1,
       "Product Form: Are you interested in a coach service from any of the following locations?": 1,
       "Product Form: Graduation Year": 1,
@@ -113,10 +113,10 @@ exports.listByCoach = async (uni = { $regex: ".*" }) => {
       "Product Form: Are you interested in a coach service from any of the following locations?": uni,
     },
     {
-      "Product Form: First Name": 1,
+      "Product Form: Name": 1,
       "Product Form: Last Name": 1,
       "Product Form: Mobile Number": 1,
-      "Product Form: Email": 1,
+      "Email": 1,
       "Product Form: University": 1,
       "Product Form: Are you interested in a coach service from any of the following locations?": 1,
       _id: 0,
