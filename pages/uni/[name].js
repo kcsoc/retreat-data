@@ -45,13 +45,13 @@ export default function Uni({ name, data }) {
             {data.map((item) => (
               <tr
                 key={
-                  item["Product Form: Name"] +
+                  item["Product Form: First Name"] +
                   item["Product Form: Last Name"]
                 }
               >
-                <td>{item["Product Form: Name"]}</td>
+                <td>{item["Product Form: First Name"]}</td>
                 <td>{item["Product Form: Last Name"]}</td>
-                <td>{item["Email"]}</td>
+                <td>{item["Product Form: Email"]}</td>
                 <td>{item["Product Form: Mobile Number"]}</td>
                 <td>{item["Product Form: Are you interested in a coach service from any of the following locations?"]}</td>
               </tr>
