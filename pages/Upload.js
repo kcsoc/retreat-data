@@ -32,7 +32,7 @@ export default function FileUpload() {
       <div>
         {/* <img src={createObjectURL} /> */}
         <h4>Select Orders CSV (National Team only!)</h4>
-        <a href="https://kcsoc.squarespace.com/api/commerce/orders/export?orderStates=CANCELLED%2CFULFILLED%2CPENDING&orderSubmittedOnMin=2019-09-02T13%3A01%3A43.327Z&orderSubmittedOnMax=2025-01-13T23%3A59%3A59.999Z&productId=659f185101c7c45a5a10ad28&includeProductForm=true">CSV download link Weekend Retreat Nov 23 (you have to be logged in)</a>
+        <a href="https://kcsoc.squarespace.com/api/commerce/orders/export?orderStates=CANCELLED%2CFULFILLED%2CPENDING&orderSubmittedOnMin=2019-09-02T13%3A01%3A43.327Z&orderSubmittedOnMax=2025-02-04T23%3A59%3A59.999Z">CSV download link Weekend Retreat Nov 23 (you have to be logged in)</a>
         <input type="file" name="myImage" onChange={uploadToClient} />
         <button
           className="btn btn-primary"
